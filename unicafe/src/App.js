@@ -7,17 +7,30 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
+//tilastorivi-komponentti
+const StatisticLine = ({ text, value }) => {
+  if (text != "positive") {
+    return (
+        <p>{text} {value}</p>
+    )
+  }
+  return (
+    <p>{text} {value} %</p>
+  )
+
+}
+
 // renderöidään vaihtoehdot ja niiden saamat äänimäärät omassa komponentissa
 const Statistics = (props) => {
   if (props.all != 0) {
     return (
       <div>
-        <p>good {props.good}</p>
-        <p>neutral {props.neutral}</p>
-        <p>bad {props.bad}</p>
-        <p>all {props.all}</p>
-        <p>average {props.average}</p>
-        <p>positive {props.positive} %</p>
+        <StatisticLine text="good" value={props.good} />
+        <StatisticLine text="neutral" value={props.neutral} />
+        <StatisticLine text="bad" value={props.bad} />
+        <StatisticLine text="all" value={props.all} />
+        <StatisticLine text="average" value={props.average} />
+        <StatisticLine text="positive" value={props.positive} />
       </div>
     )
   }
@@ -36,7 +49,6 @@ const App = () => {
   const [all, setAll] = useState(0)
   const [average, setAverage] = useState(0)
 
-//for each good +1 - (forEach bad +1) / all 
 const handleGoodClick = () => {
   setGood(good + 1)
   setAll(all + 1)
