@@ -8,15 +8,15 @@ const Button = ({ handleClick, text }) => (
 )
 
 // renderöidään vaihtoehdot ja niiden saamat äänimäärät omassa komponentissa
-const Value = ({good, neutral, bad, all, average, positive}) => {
+const Statistics = (props) => {
   return (
     <div>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {average}</p>
-      <p>positive {positive} %</p>
+      <p>good {props.good}</p>
+      <p>neutral {props.neutral}</p>
+      <p>bad {props.bad}</p>
+      <p>all {props.all}</p>
+      <p>average {props.average}</p>
+      <p>positive {props.positive} %</p>
     </div>
   )
 }
@@ -55,7 +55,7 @@ const handleBadClick = () => {
       <Button handleClick={handleNeutralClick} text="neutral" />
       <Button handleClick={handleBadClick} text="bad" />
       <h1>statistics</h1>
-      <Value good={good} neutral={neutral} bad={bad}  all={all} average={average/all} positive={good/all*100} />
+      <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average/all} positive={good/all*100} />
     </div>
   )
 }
