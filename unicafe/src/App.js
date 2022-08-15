@@ -9,7 +9,7 @@ const Button = ({ handleClick, text }) => (
 
 //tilastorivi-komponentti
 const StatisticLine = ({ text, value }) => {
-  if (text != "positive") {
+  if (text !== "positive") {
     return (
         <p>{text} {value}</p>
     )
@@ -22,7 +22,7 @@ const StatisticLine = ({ text, value }) => {
 
 // renderöidään vaihtoehdot ja niiden saamat äänimäärät omassa komponentissa
 const Statistics = (props) => {
-  if (props.all != 0) {
+  if (props.all !== 0) {
     return (
       <div>
         <StatisticLine text="good" value={props.good} />
