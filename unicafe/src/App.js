@@ -11,12 +11,26 @@ const Button = ({ handleClick, text }) => (
 const StatisticLine = ({ text, value }) => {
   if (text !== "positive") {
     return (
-        <p>{text} {value}</p>
+      <table>
+        <tbody>
+          <tr>
+            <td>{ text }</td>
+            <td>{ value }</td>
+          </tr>
+        </tbody>
+      </table>
     )
   }
-  return (
-    <p>{text} {value} %</p>
-  )
+  return ( 
+    <table>
+      <tbody>
+          <tr>
+            <td>{ text }</td>
+            <td>{ value } %</td>
+          </tr>
+      </tbody>
+    </table>
+   )
 
 }
 
