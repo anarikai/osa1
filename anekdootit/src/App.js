@@ -7,6 +7,19 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
+// Etsitään suosikki äänimäärän perusteella
+const FindMaxVotes = (props) => {
+  const max = Math.max(...props.points)
+  return (
+    <div>
+      <h1>Anecdote with most votes</h1>
+      <p>{props.anecdotes[props.points.indexOf(max)]}</p>
+      <p>has {max} votes</p>
+    </div>
+  )
+
+}
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -30,18 +43,18 @@ const App = () => {
 
   const handleVoteClick = () => {
     const copy = [...points]
-    console.log("Copy of points: ", copy)
-    return (
-      setPoint(copy, [copy[selected] += 1])
-    )
+    setPoint(copy, [copy[selected] += 1])
+    //console.log(points)
   }
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <Button handleClick={handleVoteClick} text="vote" />
       <Button handleClick={handleClick} text="next anecdote" />
+      <FindMaxVotes points={points} anecdotes={anecdotes} />
     </div>
   )
 }
